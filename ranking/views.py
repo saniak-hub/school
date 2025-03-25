@@ -190,7 +190,7 @@ def add_subjects(request, test_id, subject_count):
 
 def add_students(request, test_id):
     test = get_object_or_404(Test, id=test_id)
-    subjects = test.subject_set.all()
+    subjects = test.subjects.all()
     
     # Authorization check
     if (request.user.is_authenticated and test.created_by != request.user) or \
