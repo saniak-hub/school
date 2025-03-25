@@ -1,0 +1,30 @@
+{% extends "ranking/base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-header">
+            <h2>Add Subjects for {{ test.name }}</h2>
+        </div>
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+                <div id="subject-fields">
+                    {% for i in subject_count %}
+                        <div class="mb-3">
+                            <label for="subject_name_{{ i }}" class="form-label">Subject {{ forloop.counter }} Name:</label>
+                            <input type="text" name="subject_name" id="subject_name_{{ i }}" class="form-control" required>
+                        </div>
+                    {% endfor %}
+                </div>
+                <button type="submit" class="btn btn-primary">Next: Add Students</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %} 
+   <script src="{% static 'js/add_student.js' %}">
+        // Dynamic subject field addition can be added here if needed
+    </script>
+{% endblock %} 

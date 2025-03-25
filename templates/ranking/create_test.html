@@ -1,0 +1,25 @@
+{% extends "ranking/base.html" %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-header">
+            <h2>Create New Test</h2>
+        </div>
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    {{ form.name.label_tag }}
+                    {{ form.name }}
+                    {{ form.name.errors }}
+                </div>
+                <div class="mb-3">
+                    {{ form.subject_count.label_tag }}
+                    {{ form.subject_count }}
+                    {{ form.subject_count.errors }}
+                </div>
+                <button type="submit" class="btn btn-primary">Next: Add Subjects</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

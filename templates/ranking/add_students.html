@@ -1,0 +1,27 @@
+{% extends "ranking/base.html" %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-header">
+            <h2>Add Students for {{ test.name }}</h2>
+            <p>Subjects: {{ test.subjects.all()|join:", " }}</p>
+        </div>
+        <div class="card-body">
+            <form method="post" id="student-form">
+                {% csrf_token %}
+                <div id="student-fields">
+                    <div class="mb-3 student-row">
+                        <label for="student_name_1" class="form-label">Student Name:</label>
+                        <input type="text" name="student_name" id="student_name_1" class="form-control" required>
+                    </div>
+                </div>
+                <button type="button" id="add-student" class="btn btn-secondary mb-3">Add Another Student</button>
+                <button type="submit" class="btn btn-primary">Next: Enter Marks</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'ranking/js/add_students.js' %}"></script>
+{% endblock %}

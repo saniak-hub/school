@@ -1,0 +1,86 @@
+/* Header styling */
+.header {
+    background-color: #add8e6; /* Light blue */
+    padding: 1rem 0;
+}
+
+.header .navbar-brand,
+.header .nav-link {
+    color: white !important;
+    font-weight: bold;
+}
+
+/* Table styling */
+.table-header {
+    background-color: #32cd32; /* Lime green */
+    color: white;
+}
+
+.table-row-light {
+    background-color: #f0f0f0; /* Light grey */
+}
+
+.table-row-lighter {
+    background-color: #e0ffe0; /* Light green */
+}
+
+.table-footer {
+    background-color: #d0d0d0;
+    font-weight: bold;
+}
+
+/* Form styling */
+.card {
+    margin-bottom: 2rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.card-header {
+    background-color: #f8f9fa;
+    padding: 1.25rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .table-responsive {
+        overflow-x: auto;
+    }
+}
+
+/* Mark input fields */
+.mark-input {
+    width: 80px;
+    margin: 0 auto;
+    display: block;
+}
+
+.total-cell, .average-cell {
+    font-weight: bold;
+    text-align: center;
+}
+
+
+/* Auth pages styling */
+.auth-card {
+    max-width: 500px;
+    margin: 2rem auto;
+}
+
+.auth-card .card-header {
+    background-color: #add8e6;
+    color: white;
+    text-align: center;
+}
+
+.auth-card .btn-link {
+    text-decoration: none;
+}
+
+.invalid-feedback {
+    color: #dc3545;
+    font-size: 0.875em;
+}
+
+.is-invalid {
+    border-color: #dc3545;
+}
