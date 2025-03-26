@@ -1,0 +1,40 @@
+{% extends "ranking/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="row justify-content-center mt-5">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header bg-danger text-white">
+                <h2 class="text-center">Delete Test</h2>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="alert alert-warning">
+                        <strong>Warning!</strong> Are you sure you want to delete the test:
+                        <strong>"{{ test.name }}"</strong>?
+                        <p class="mt-2">This action cannot be undone and will delete all associated students and marks.</p>
+                    </div>
+                    
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-center mt-4">
+                        <button type="submit" class="btn btn-danger me-md-2">
+                            <i class="bi bi-trash-fill"></i> Confirm Delete
+                        </button>
+                        <a href="{% url 'dashboard' %}" class="btn btn-secondary">
+                            <i class="bi bi-x-circle"></i> Cancel
+                        </a>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer text-muted">
+                Created on {{ test.created_at|date:"F j, Y" }}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<!-- Add any additional JavaScript if needed -->
+{% endblock %}

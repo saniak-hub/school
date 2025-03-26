@@ -70,9 +70,15 @@
         <!-- Modal content remains the same -->
     </div>
 {% endblock %}
-
 {% block scripts %}
-    <script src="{% static 'js/edit_marks.js' %}">
-    
-    </script>
+<script>
+    // Set up API endpoints
+    const API_BASE = "{% url 'dashboard' %}".replace('dashboard', '');
+    const API_URLS = {
+        save_marks: `${API_BASE}api/save_marks/`,
+        add_student: `${API_BASE}api/add_student/`,
+        delete_student: `${API_BASE}api/delete_student/`
+    };
+</script>
+<script src="{% static 'js/edit_marks.js' %}"></script>
 {% endblock %}

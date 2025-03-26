@@ -80,10 +80,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Add new student via AJAX
-    function addNewStudent(name) {
-        const testId = window.location.pathname.split('/').filter(Boolean).pop();
-        
-        fetch(`/ranking/api/add_student/${testId}/`, {
+function addNewStudent(name) {
+    const testId = window.location.pathname.split('/').filter(Boolean).pop();
+    
+    fetch(`${API_URLS.add_student}${testId}/`, {  
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -165,7 +165,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function deleteStudent(studentId) {
         if (!confirm('Are you sure you want to delete this student?')) return;
         
-        fetch(`/ranking/api/delete_student/${studentId}/`, {
+        fetch(`${API_URLS.delete_student}${studentId}/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -214,10 +214,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 marksData[studentId][subjectId] = input.value;
             });
         });
-        
+
         const testId = window.location.pathname.split('/').filter(Boolean).pop();
-        
-        fetch(`/ranking/api/save_marks/${testId}/`, {
+    
+        fetch(`${API_URLS.save_marks}${testId}/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

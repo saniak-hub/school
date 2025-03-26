@@ -84,3 +84,23 @@
 .is-invalid {
     border-color: #dc3545;
 }
+
+/* Delete confirmation specific styles */
+.card-header.bg-danger {
+    background-color: #dc3545 !important;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.btn-danger:hover {
+    background-color: #bb2d3b;
+    border-color: #bb2d3b;
+}
+
+.alert-warning {
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+}
