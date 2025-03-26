@@ -263,9 +263,14 @@ function addNewStudent(name) {
     
     // Initialize event listeners for existing elements
     document.querySelectorAll('.mark-input').forEach(input => {
-        input.addEventListener('change', updateTotals);
-        input.addEventListener('input', updateTotals);
+    input.addEventListener('change', function() {
+        roundInputValue(this);
+        updateTotals();
     });
+    input.addEventListener('blur', function() {
+        roundInputValue(this);
+    });
+});
     
     document.querySelectorAll('.delete-student').forEach(btn => {
         btn.addEventListener('click', function() {
@@ -276,3 +281,12 @@ function addNewStudent(name) {
     // Initial calculations
     updateTotals();
 });
+
+function roundInputValue(input) {
+    const value = parseFloat(input.value);
+    if (!isNaN(value)) {
+        input.value = Math.round(value);
+    } else {
+        input.value = '';
+    }
+}

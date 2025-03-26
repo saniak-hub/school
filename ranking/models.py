@@ -49,7 +49,14 @@ class Mark(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
     value = models.DecimalField(max_digits=5, decimal_places=2, default=0)
+
+    value = models.DecimalField(max_digits=5, decimal_places=2)
     
+    def save(self, *args, **kwargs):
+        # Round to nearest whole number before saving
+        self.value = round(float(self.value))
+        super().save(*args, **kwargs)
+
     def __str__(self):
         return f"{self.student.name} - {self.subject.name}: {self.value}"
     

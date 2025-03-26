@@ -81,16 +81,17 @@ def api_save_marks(request, test_id):
             marks_data = data.get('marks_data', {})
             
             for student_id, subject_marks in marks_data.items():
-                student = get_object_or_404(Student, id=student_id)
+                student = Student.objects.get(id=student_id)
                 for subject_id, mark_value in subject_marks.items():
-                    mark = get_object_or_404(Mark, student=student, subject_id=subject_id)
-                    mark.value = float(mark_value) if mark_value else 0
+                    mark = Mark.objects.get(student=student, subject_id=subject_id)
+                    # Round to nearest whole number
+                    mark.value = round(float(mark_value or 0))
                     mark.save()
             
             return JsonResponse({'status': 'success'})
         except Exception as e:
-            return JsonResponse({'status': 'error', 'error': str(e)})
-    return JsonResponse({'status': 'error', 'error': 'Invalid method'})
+            return JsonResponse({'status': 'error', 'error': str(e)}, status=400)
+    return JsonResponse({'status': 'error', 'error': 'Invalid method'}, status=405)
 
 @login_required
 def user_logout(request):
@@ -125,7 +126,7 @@ def dashboard(request):
                 'rank': rank,
                 'name': student.name,
                 'marks': marks,
-                'total': student.total_marks
+                'total': round(student.total_marks)
             })
         
         # Calculate subject averages

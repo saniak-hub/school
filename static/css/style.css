@@ -104,3 +104,20 @@
     background-color: #fff3cd;
     border-color: #ffeeba;
 }
+
+/* Make input fields show whole numbers clearly */
+.mark-input {
+    -moz-appearance: textfield; /* Hide spinner in Firefox */
+}
+
+.mark-input::-webkit-outer-spin-button,
+.mark-input::-webkit-inner-spin-button {
+    -webkit-appearance: none; /* Hide spinner in Chrome/Safari */
+    margin: 0;
+}
+
+/* Visual feedback when value is rounded */
+.mark-input.rounded {
+    background-color: rgba(13, 110, 253, 0.05);
+    border-color: #0d6efd;
+}

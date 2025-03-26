@@ -30,11 +30,15 @@
                                     <td>{{ data.student.name }}</td>
                                     {% for subject in subjects %}
                                         <td>
-                                            <input type="number" step="0.01" min="0" 
-                                                   class="form-control mark-input" 
-                                                   data-subject-id="{{ subject.id }}"
-                                                   value="{{ data.marks|get_item:subject.id|floatformat:2 }}">
-                                        </td>
+                                            <input type="number"
+                                                    class="form-control mark-input"
+                                                    data-subject-id="{{ subject.id }}"
+                                                    value="{{ data.marks|get_item:subject.id|floatformat:0|default:'' }}"
+                                                    placeholder="Enter marks"
+                                                    step="any"  
+                                                    min="0"
+                                                    {% if forloop.first and forloop.parentloop.first %}autofocus{% endif %}>
+</td>
                                     {% endfor %}
                                     <td class="total-cell">{{ data.total|floatformat:2 }}</td>
                                     <td>
