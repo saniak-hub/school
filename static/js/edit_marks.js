@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
     
     // Calculate totals when marks change
-    function updateTotals() {
+    function updateTotals() {/* {{{ */
         document.querySelectorAll('tbody tr[data-student-id]').forEach(row => {
             const inputs = row.querySelectorAll('.mark-input');
             let total = 0;
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (totalAvgCell) {
             totalAvgCell.innerHTML = `<strong>${totalAvg}</strong>`;
         }
-    }
+    } /*}}} */
     
     // Add student button
     if (addStudentBtn) {
@@ -65,14 +65,15 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Save new student
-    const saveNewStudentBtn = document.getElementById('save-new-student');
+    const saveNewStudentBtn = document.getElementById('saveNewStudent');
     if (saveNewStudentBtn) {
         saveNewStudentBtn.addEventListener('click', function() {
-            const studentName = document.getElementById('new-student-name').value.trim();
+            const studentName = document.getElementById('newStudentName').value.trim();
+            alert("saveNewStudent created")
             if (studentName) {
                 addNewStudent(studentName);
                 modal.hide();
-                document.getElementById('new-student-name').value = '';
+                document.getElementById('newStudentName').value = '';
             } else {
                 alert('Please enter a student name');
             }
@@ -95,6 +96,7 @@ function addNewStudent(name) {
         .then(data => {
             if (data.success) {
                 addStudentToTable(data.student);
+                window.location.reload();
             } else {
                 alert(data.error || 'Error adding student');
             }
